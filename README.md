@@ -1,6 +1,7 @@
 # SpotExcel
 
-Create (trivial) Excel Workbooks programatically.
+Create (trivial) Excel Workbooks programatically.  Outputs an XML formatted
+Workbook description which when read by Excel will create a workbook.
 
 ```scala
   def workbook: Workbook = {
