@@ -19,7 +19,7 @@ sealed abstract class XCell {
 }
 
 case class Cell(data: String) extends XCell {
-  def shows: String = showgen[String]("String")(data)
+  def shows: String = showgen[String]("String")(XmlUtility.escape(data))
 }
 
 case class IntCell(data: Int) extends XCell {

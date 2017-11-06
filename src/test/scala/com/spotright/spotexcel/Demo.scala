@@ -8,15 +8,15 @@ object Demo {
 
   def workbook: Workbook = {
     Workbook.withSheets(
-      Worksheet.named("Employees").withRows(
+      Worksheet.named("Employee Name & ID").withRows(
         Header.withCells(Cell("Name"), Cell("Department"), Cell("Employee ID")),
         Row.withCells(Cell("Lanny"), Cell("Engineering"), IntCell(2002)),
         Row.withCells(Cell("Brady"), Cell("Product"), IntCell(3001)),
         Row.withCells(Cell("Jessica"), Cell("Client Engagement"), IntCell(4001)),
-        Row.withCells(Cell("Todd"), Cell("Business"), IntCell(1001))
+        Row.withCells(Cell("Todd"), Cell("Sales & Business"), IntCell(1001))
       ),
       Worksheet.named("Metrics").withRows(
-        Header.withCells(Cell("Category"), Cell("Coount"), Cell("Population"), Cell("Percentage")),
+        Header.withCells(Cell("Category"), Cell("Count"), Cell("Population"), Cell("Percentage")),
         EmptyRow,
         Row.withCells(Cell("001"), IntCell(250), IntCell(768), NumCell(250.0/768)),
         Row.withCells(Cell("002"), IntCell(56), IntCell(500), NumCell(56.0/500)),

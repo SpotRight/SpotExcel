@@ -1,1 +1,1 @@
-addSbtPlugin("com.spotright" % "sbt-config" % "2.5.1")
+addSbtPlugin("com.spotright" % "sbt-config" % "2.5.8")

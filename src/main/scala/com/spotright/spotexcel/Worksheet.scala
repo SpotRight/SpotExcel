@@ -7,7 +7,7 @@ case class Worksheet(name: String, rows: Seq[XRow], defaultColumnWidth: Int = 80
 
     sb ++= "<ss:Worksheet ss:Name="
     sb += '"'
-    sb ++= name
+    sb ++= XmlUtility.escape(name)
     sb += '"'
     sb ++= ">"
     sb ++= "\n"
