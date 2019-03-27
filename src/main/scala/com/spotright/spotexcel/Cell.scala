@@ -4,10 +4,16 @@ sealed abstract class XCell {
 
   def shows: String
 
-  def showgen[A](ssType: String): A => String = {
+  def showgen[A](ssType: String, attrs: String*): A => String = {
     (a: A) =>
       val sb = StringBuilder.newBuilder
-      sb ++= "<ss:Cell><ss:Data ss:Type="
+      sb ++= "<ss:Cell"
+      attrs.foreach {
+        attr =>
+          sb ++= " "
+          sb ++= attr
+      }
+      sb ++= "><ss:Data ss:Type="
       sb += '"'
       sb ++= ssType
       sb += '"'
@@ -18,28 +24,28 @@ sealed abstract class XCell {
   }
 }
 
-case class Cell(data: String) extends XCell {
-  def shows: String = showgen[String]("String")(XmlUtility.escape(data))
+case class Cell(data: String, attrs: String*) extends XCell {
+  def shows: String = showgen[String]("String", attrs: _*)(XmlUtility.escape(data))
 }
 
-case class IntCell(data: Int) extends XCell {
-  def shows: String = showgen[Int]("Number")(data)
+case class IntCell(data: Int, attrs: String*) extends XCell {
+  def shows: String = showgen[Int]("Number", attrs: _*)(data)
 }
 
-case class LongCell(data: Long) extends XCell {
-  def shows: String = showgen[Long]("Number")(data)
+case class LongCell(data: Long, attrs: String*) extends XCell {
+  def shows: String = showgen[Long]("Number", attrs: _*)(data)
 }
 
-case class NumCell(data: Double) extends XCell {
-  def shows: String = showgen[Double]("Number")(data)
+case class NumCell(data: Double, attrs: String*) extends XCell {
+  def shows: String = showgen[Double]("Number", attrs: _*)(data)
 }
 
-case class BoolCell(data: Boolean) extends XCell {
-  def shows: String = showgen[Boolean]("Boolean")(data)
+case class BoolCell(data: Boolean, attrs: String*) extends XCell {
+  def shows: String = showgen[Boolean]("Boolean", attrs: _*)(data)
 }
 
-case class DateTimeCell(data: String) extends XCell {
-  def shows: String = showgen[String]("DateTime")(data)
+case class DateTimeCell(data: String, attrs: String*) extends XCell {
+  def shows: String = showgen[String]("DateTime", attrs: _*)(data)
 }
 
 case object EmptyCell extends XCell {

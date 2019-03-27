@@ -1,6 +1,6 @@
 package com.spotright.spotexcel
 
-case class Worksheet(name: String, rows: Seq[XRow], defaultColumnWidth: Int = 80) {
+case class Worksheet(name: String, rows: Seq[XRow], columns: Seq[Column] = Seq.empty[Column], defaultColumnWidth: Int = 80) {
 
   lazy val shows: String = {
     val sb = StringBuilder.newBuilder
@@ -16,6 +16,8 @@ case class Worksheet(name: String, rows: Seq[XRow], defaultColumnWidth: Int = 80
     sb.append(defaultColumnWidth)
     sb += '"'
     sb ++= ">"
+    sb ++= "\n"
+    sb ++= columns.map{_.shows}.mkString("\n")
     sb ++= "\n"
     sb ++= rows.map{_.shows}.mkString("\n")
     sb ++=

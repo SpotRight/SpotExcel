@@ -12,6 +12,10 @@ case class Workbook(sheets: Seq[Worksheet]) {
         |        <ss:Style ss:ID="1">
         |            <ss:Font ss:Bold="1" />
         |        </ss:Style>
+        |        <ss:Style ss:ID="2">
+        |            <ss:NumberFormat ss:Format="#,###" />
+        |            <ss:Alignment ss:Horizontal="Left" ss:Vertical="Bottom" />
+        |        </ss:Style>
         |    </ss:Styles>
         |""".stripMargin
     sb ++= sheets.map{_.shows}.mkString("\n")
